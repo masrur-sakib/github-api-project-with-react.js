@@ -1,0 +1,13 @@
+.search_container{
+    text-align: left;
+}
+
+.section{
+    margin: 20px 0px;
+    padding: 20px;
+}
+
+.avatar img{
+    height: 100px;
+    width: 100px;
+}

@@ -1,0 +1,8 @@
+.site_header{
+    background-color: rgb(212, 211, 211);
+    display: flex;
+    justify-content: center;
+}
+.site_title{
+    font-size: 30px;
+}
