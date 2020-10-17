@@ -51,7 +51,7 @@ const UserProfile = () => {
                             <th scope="col">User Name</th>
                             <th scope="col">Location</th>
                             <th scope="col">Avatar</th>
-                            <th scope="col">Top 5 Starred Repositories</th>
+                            <th scope="col">Most Starred Repositories (Top 5)</th>
                           </tr>
                         </thead>
                         <tbody>
