@@ -18,4 +18,4 @@
         <h5>Github API</h5>
     </li>
 </ul>
-<a target="_blank" href="https://masrursakib-react-typescript-quiz-app.netlify.app/">Live Website Link</a>
+<a target="_blank" href="https://masrursakib-react-github-api.netlify.app/">Live Website Link</a>
