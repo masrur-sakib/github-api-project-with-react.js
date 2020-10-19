@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import ExistingUserResult from '../ExistingUserResult/ExistingUserResult';
 import SearchResult from '../SearchResult/SearchResult';
-import Users from '../Users/Users';
 import "./UserProfile.css";
 
 const UserProfile = () => {
-    const [clickedUserInfo, setClickedUserInfo] = useState({});
+    const [existingUserInfo, setExistingUserInfo] = useState({});
+    const [existingUserRepos, setExistingUserRepos] = useState({});
     const [data, setData] = useState({});
     const [username, setUsername] = useState("");
     const [repositories, setRepositories] = useState([]);
@@ -12,7 +13,6 @@ const UserProfile = () => {
     const [dataLoaded, setDataLoaded] = useState(false);
     const [userExists, setUserExists] = useState(false);
     const [users, setUsers] = useState([]);
-
 
     const top_repositories = repositories.sort((a, b) => {
         return b.stargazers_count - a.stargazers_count
@@ -36,11 +36,9 @@ const UserProfile = () => {
         setUserInfo(false);
         const profile = await fetch(`https://api.github.com/users/${username}`);
         const profileJson = await profile.json();
-        // console.log(profileJson);
 
         const repositories = await fetch(profileJson.repos_url);
         const repositoriesJson = await repositories.json();
-        // console.log(repositoriesJson);
 
         if (profileJson) {
             setData(profileJson);
@@ -54,7 +52,7 @@ const UserProfile = () => {
             }
             
             !userExists && users.push({
-                avatar: profileJson.avatar_url,
+                avatar_url: profileJson.avatar_url,
                 name: profileJson.name,
                 location: profileJson.location,
                 followers: profileJson.followers,
@@ -77,6 +75,7 @@ const UserProfile = () => {
             const clicked_id = window.event.target.id;
             if(users[i].login === clicked_id){
                 let clicked_user_info = {
+                    avatar_url: users[i].avatar_url,
                     name: users[i].name,
                     location: users[i].location,
                     followers: users[i].followers,
@@ -84,11 +83,21 @@ const UserProfile = () => {
                     login: users[i].login,
                     public_repos: users[i].public_repos,
                     public_gists: users[i].public_gists,
-                    totalRepositories: users[i].totalRepositories
                 };
+                let total_repos =users[i].totalRepositories;
 
-                setClickedUserInfo(clicked_user_info);
-                
+                const topRepositories = total_repos.sort((a, b) => {
+                    return b.stargazers_count - a.stargazers_count
+                }).slice(0, 5).map(repository => (
+                    <ul key={repository.id}>
+                        <li>
+                            <a href={repository.html_url} target="_blank">{repository.name}</a>
+                            <h6>Star: {repository.stargazers_count}</h6>
+                        </li>
+                    </ul>
+                ));
+                setExistingUserInfo(clicked_user_info);
+                setExistingUserRepos(topRepositories);
             }
         };
         
@@ -106,7 +115,7 @@ const UserProfile = () => {
                 )}
             </div>
             
-            {/* Search Result Section */}
+            {/* Search Form Section */}
             <div className="col-sm-9 ">
                 <div className="section">
                     <h4 className="text-info">Search</h4>
@@ -116,24 +125,14 @@ const UserProfile = () => {
                     </form>
                 </div>
 
+            {/* Search Result Section */}
                 {!userInfo && <div className="section">
                     <h4 className="text-info">Search Result</h4>
                     {dataLoaded && <SearchResult top_repositories={top_repositories} data={data}></SearchResult>}
                 </div>}
-
-                {userInfo &&  <div>
-                    <h4 className="text-info">User Info</h4>
-                    {/* <h6>Work in Progress...</h6> */}
-                    <h4>Name: {clickedUserInfo.name}</h4>
-                    <h4>Location: {clickedUserInfo.location}</h4>
-                    <h4>Followers: {clickedUserInfo.followers}</h4>
-                    <h4>Following: {clickedUserInfo.following}</h4>
-                    <h4>Username: {clickedUserInfo.login}</h4>
-                    <h4>Public Repositories: {clickedUserInfo.public_repos}</h4>
-                    <h4>Public Gists: {clickedUserInfo.public_gists}</h4>
-                </div>}
-                
-
+            
+            {/* Existing User Result Section */}
+                {userInfo &&  <ExistingUserResult existingUserInfo={existingUserInfo} existingUserRepos={existingUserRepos}></ExistingUserResult>}
             </div>
         </div>
     );
