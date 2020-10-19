@@ -1,7 +1,9 @@
 .search_container{
     text-align: left;
     margin: 20px 100px;
-    border: 1px solid grey;
+    padding: 30px 30px 50px 30px;
+    border: 1px solid #c9c7c7;
+    box-shadow: 0 0 35px -2px #48497926;
 }
 
 .section{
