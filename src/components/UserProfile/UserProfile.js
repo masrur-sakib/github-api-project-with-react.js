@@ -35,7 +35,7 @@ const UserProfile = () => {
         setUserInfo(false);
         const profile = await fetch(`https://api.github.com/users/${username}`);
         const profileJson = await profile.json();
-        console.log(profileJson);
+        // console.log(profileJson);
 
         const repositories = await fetch(profileJson.repos_url);
         const repositoriesJson = await repositories.json();
@@ -67,6 +67,7 @@ const UserProfile = () => {
     const userInfoHandler = e => {
         e.preventDefault();
         setUserInfo(true);
+        document.getElementById('search_input').value = '';
     };
 
     return (
@@ -91,7 +92,7 @@ const UserProfile = () => {
                 </div>
 
                 {!userInfo && <div className="section">
-                    <h4 className="text-info">Search Results</h4>
+                    <h4 className="text-info">Search Result</h4>
                     {dataLoaded && <SearchResult top_repositories={top_repositories} data={data}></SearchResult>}
                 </div>}
 

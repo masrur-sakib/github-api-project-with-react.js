@@ -7,31 +7,33 @@ const SearchResult = (props) => {
     return (
         <div >
             <div className="userinfo_container">
-                <div class="grid-area grid-area-1 avatar"><img src={data.avatar_url} alt="" /></div>
-                <div class="grid-area grid-area-2">
-                    Name: <span>{data.name}</span>
+                <div className="grid-area grid-area-1 avatar">
+                    <img src={data.avatar_url} alt="" />
                 </div>
-                <div class="grid-area grid-area-3">
-                    Location: <span>{data.location}</span>
+                <div className="grid-area grid-area-2">
+                    <p>Name: <span>{data.name}</span></p>
                 </div>
-                <div class="grid-area grid-area-4">
-                    Followers: <span>{data.followers}</span>
+                <div className="grid-area grid-area-3">
+                    <p>Location: <span>{data.location}</span></p>
                 </div>
-                <div class="grid-area grid-area-5">
-                    Following: <span>{data.following}</span>
+                <div className="grid-area grid-area-4">
+                    <p>Followers: <span>{data.followers}</span></p>
                 </div>
-                <div class="grid-area grid-area-6">
-                    Username: <span>{data.login}</span>
+                <div className="grid-area grid-area-5">
+                    <p>Following: <span>{data.following}</span></p>
                 </div>
-                <div class="grid-area grid-area-7">
-                    Public Repos: <span>{data.public_repos}</span>
+                <div className="grid-area grid-area-6">
+                    <p>Username: <span>{data.login}</span></p>
                 </div>
-                <div class="grid-area grid-area-8">
-                    Public Gists: <span>{data.public_gists}</span>
+                <div className="grid-area grid-area-7">
+                    <p>Public Repos: <span>{data.public_repos}</span></p>
                 </div>
-                <div class="grid-area grid-area-9">
-                    <p>Most Starred Repositories:</p>
-                    <p><span>{top_repositories}</span></p>
+                <div className="grid-area grid-area-8">
+                    <p>Public Gists: <span>{data.public_gists}</span></p>
+                </div>
+                <div className="grid-area grid-area-9">
+                    <p>Most Starred Repositories (Top 5):</p>
+                    <h6><span>{top_repositories}</span></h6>
                 </div>
             </div>
         </div>
