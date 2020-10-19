@@ -1,13 +1,30 @@
 .search_container{
     text-align: left;
+    margin: 20px 100px;
+    border: 1px solid grey;
 }
 
 .section{
-    margin: 20px 0px;
-    padding: 20px;
+    margin: 20px 0px 50px 0px;
 }
 
+.avatar{
+    display: flex;
+    justify-content: center;
+}
 .avatar img{
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+}
+
+.users_section{
+    margin: 20px 0px;
+    border-right: 1px solid grey;
+}
+
+.user_info{
+    padding: 20px;
+    background-color: aliceblue;
+    cursor: pointer;
 }
