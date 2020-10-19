@@ -4,13 +4,14 @@ import Users from '../Users/Users';
 import "./UserProfile.css";
 
 const UserProfile = () => {
+    const [clickedUserInfo, setClickedUserInfo] = useState({});
     const [data, setData] = useState({});
     const [username, setUsername] = useState("");
     const [repositories, setRepositories] = useState([]);
-    const [users, setUsers] = useState([]);
     const [userInfo, setUserInfo] = useState(false);
     const [dataLoaded, setDataLoaded] = useState(false);
     const [userExists, setUserExists] = useState(false);
+    const [users, setUsers] = useState([]);
 
 
     const top_repositories = repositories.sort((a, b) => {
@@ -51,12 +52,17 @@ const UserProfile = () => {
                     setUserExists(true);
                 }
             }
-
+            
             !userExists && users.push({
+                avatar: profileJson.avatar_url,
                 name: profileJson.name,
-                login: profileJson.login,
                 location: profileJson.location,
-                avatar: profileJson.avatar_url
+                followers: profileJson.followers,
+                following: profileJson.following,
+                login: profileJson.login,
+                public_repos: profileJson.public_repos,
+                public_gists: profileJson.public_gists,
+                totalRepositories: repositoriesJson
             })
         };
 
@@ -67,9 +73,28 @@ const UserProfile = () => {
     const userInfoHandler = e => {
         e.preventDefault();
         setUserInfo(true);
-        document.getElementById('search_input').value = '';
+        for(let i=0; i<users.length; i++){
+            const clicked_id = window.event.target.id;
+            if(users[i].login === clicked_id){
+                let clicked_user_info = {
+                    name: users[i].name,
+                    location: users[i].location,
+                    followers: users[i].followers,
+                    following: users[i].following,
+                    login: users[i].login,
+                    public_repos: users[i].public_repos,
+                    public_gists: users[i].public_gists,
+                    totalRepositories: users[i].totalRepositories
+                };
+
+                setClickedUserInfo(clicked_user_info);
+                
+            }
+        };
+        
     };
 
+    
     return (
         <div className="row search_container">
             {/* Search Section */}
@@ -98,7 +123,14 @@ const UserProfile = () => {
 
                 {userInfo &&  <div>
                     <h4 className="text-info">User Info</h4>
-                    <h6>Work in Progress...</h6>
+                    {/* <h6>Work in Progress...</h6> */}
+                    <h4>Name: {clickedUserInfo.name}</h4>
+                    <h4>Location: {clickedUserInfo.location}</h4>
+                    <h4>Followers: {clickedUserInfo.followers}</h4>
+                    <h4>Following: {clickedUserInfo.following}</h4>
+                    <h4>Username: {clickedUserInfo.login}</h4>
+                    <h4>Public Repositories: {clickedUserInfo.public_repos}</h4>
+                    <h4>Public Gists: {clickedUserInfo.public_gists}</h4>
                 </div>}
                 
 

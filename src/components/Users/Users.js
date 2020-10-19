@@ -6,7 +6,6 @@ const Users = (props) => {
     return (
         <div>
             <h4>User1</h4>
-            {/* <h4>{props.users.name}</h4> */}
         </div>
     );
 };
