@@ -106,12 +106,12 @@ const UserProfile = () => {
     
     return (
         <div className="row search_container">
-            {/* Search Section */}
+            {/* Existing Users Section */}
             <div className=" col-sm-3 users_section">
                 <h4 className="text-info">Github Users</h4>
                 {
                 users.map((user, index)=> 
-                    <h4 id={user.login} className="user_info" onClick={userInfoHandler} key={index}>{user.name}</h4>
+                    <h4 id={user.login} className="user_info" onClick={userInfoHandler} key={index}>{user.login}</h4>
                 )}
             </div>
             
