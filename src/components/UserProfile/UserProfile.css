@@ -15,18 +15,42 @@
     justify-content: center;
 }
 .avatar img{
-    height: 150px;
-    width: 150px;
+    height: 120px;
+    width: 120px;
     border-radius: 50%;
 }
 
 .users_section{
     margin: 20px 0px;
     border-right: 1px solid grey;
+    overflow: auto;
 }
 
 .user_info{
-    padding: 20px;
+    padding: 10px;
     background-color: aliceblue;
     cursor: pointer;
+    overflow: auto;
+}
+.repository-info{
+    font-size: 15px;
+    font-weight: 700;
+}
+
+@media only screen and (max-width: 600px) {
+    .search_container{
+        margin: 10px;
+        padding: 10px;
+    }
+    .section{
+        margin: 20px 0px;
+    }
+    .users_section{
+        margin: 0px;
+        border-right: none;
+    }
+    .avatar img{
+        height: 70px;
+        width: 70px;
+    }
 }

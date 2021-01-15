@@ -4,5 +4,11 @@
     justify-content: center;
 }
 .site_title{
-    font-size: 30px;
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    .site_title{
+        font-size: 15px;
+    }
 }

@@ -19,8 +19,8 @@ const UserProfile = () => {
     }).slice(0, 5).map(repository => (
         <ul key={repository.id}>
             <li>
-                <a href={repository.html_url} target="_blank">{repository.name}</a>
-                <h6>Star: {repository.stargazers_count}</h6>
+                <a href={repository.html_url} className="repository-info" target="_blank" rel="noopener noreferrer">{repository.name}</a>
+                <p className="repository-info" >Star: {repository.stargazers_count}</p>
             </li>
         </ul>
     ));
@@ -91,7 +91,7 @@ const UserProfile = () => {
                 }).slice(0, 5).map(repository => (
                     <ul key={repository.id}>
                         <li>
-                            <a href={repository.html_url} target="_blank">{repository.name}</a>
+                            <a href={repository.html_url} target="_blank" rel="noopener noreferrer">{repository.name}</a>
                             <h6>Star: {repository.stargazers_count}</h6>
                         </li>
                     </ul>
@@ -107,31 +107,31 @@ const UserProfile = () => {
     return (
         <div className="row search_container">
             {/* Existing Users Section */}
-            <div className=" col-sm-3 users_section">
+            <div className=" col-md-3 users_section">
                 <h4 className="text-info">Github Users</h4>
                 {
                 users.map((user, index)=> 
-                    <h4 id={user.login} className="user_info" onClick={userInfoHandler} key={index}>{user.login}</h4>
+                    <h6 id={user.login} className="user_info" onClick={userInfoHandler} key={index}>{user.login}</h6>
                 )}
             </div>
             
-            {/* Search Form Section */}
-            <div className="col-sm-9 ">
+            <div className="col-md-9 ">
+                {/* Search Form Section */}
                 <div className="section">
                     <h4 className="text-info">Search</h4>
                     <form className="form-inline">
-                        <input id="search_input" className="form-control mr-sm-2 m-2" type="text" value={username} onChange={onChangeHandler} aria-label="Search" placeholder="Enter Github Username" />
+                        <input id="search_input" className="form-control mr-sm-2 mt-2" type="text" value={username} onChange={onChangeHandler} aria-label="Search" placeholder="Enter Github Username" />
                         <button className="btn btn-outline-info my-2 my-sm-0 btn_search" type="submit" onClick={submitHandler}>Search</button>
                     </form>
                 </div>
 
-            {/* Search Result Section */}
+                {/* Search Result Section */}
                 {!userInfo && <div className="section">
                     <h4 className="text-info">Search Result</h4>
                     {dataLoaded && <SearchResult top_repositories={top_repositories} data={data}></SearchResult>}
                 </div>}
             
-            {/* Existing User Result Section */}
+                {/* Existing User Result Section */}
                 {userInfo &&  <ExistingUserResult existingUserInfo={existingUserInfo} existingUserRepos={existingUserRepos}></ExistingUserResult>}
             </div>
         </div>
