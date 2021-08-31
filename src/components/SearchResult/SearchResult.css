@@ -3,7 +3,6 @@
     grid-template-columns: repeat(6, 1fr);
     grid-gap: 10px 10px;
 }
-
 .grid-area{
     font-family: sans-serif;
     font-size: 15px;
