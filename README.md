@@ -4,12 +4,12 @@ It’s a Github Profile Finder web app. All the public information of a GitHub P
 
 ### Technology Used:
 
-- **GitHub API**
-- **React.js**
-- **JavaScript**
-- **HTML**
-- **CSS**
-- **Bootstrap**
+- GitHub API
+- React.js
+- JavaScript
+- HTML
+- CSS
+- Bootstrap
 
 ### Project Link:
 
